@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd ~/web || exit
+
+# Datum + Uhrzeit für Commit-Message
+DATUM=$(date '+%Y-%m-%d %H:%M')
+
+# Prüfen, ob es Änderungen gibt
+if [ -n "$(git status --porcelain)" ]; then
+    echo "Änderungen gefunden – sichere auf GitHub..."
+    git add .
+    git commit -m "Automatisches Backup am $DATUM"
+    git push https://einfachstarten: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@github.com/einfachstarten/einfachstarten.jetzt.git main
+else
+    echo "Keine Änderungen – kein Backup notwendig."
+fi

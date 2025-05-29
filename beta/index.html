@@ -3,432 +3,1677 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einfach Starten</title>
+    <title>Einfach Starten - Beta</title>
     <meta name="description" content="Einfach Starten - Innovations- und Produktmanagement mit Fokus auf agile Methoden. Unterstützung bei Projektumsetzung und Zielerreichung.">
     <meta name="keywords" content="Innovationsmanagement, Produktmanagement, agiles Coaching, Projektleitung, Marcus Braun">
-    <!-- Einbinden von Normalize CSS für konsistente Darstellung -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous">
-    <!-- Einbinden von Font Awesome für Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Einbinden Ihrer eigenen CSS-Datei -->
-    <link rel="stylesheet" href="static/style.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RTS6Q7W40"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Ihre Original-Firmenfarben */
+            --brand-blue: #005b8f;
+            --brand-blue-dark: #00407a;
+            --brand-blue-light: #0084CA;
+            --accent-cyan: #05F2DB;
+            --accent-light-blue: #89CFF0;
+            
+            /* Ergänzende moderne Farben */
+            --secondary: #00d4aa;
+            --accent: #ff6b35;
+            --dark: #1a1a2e;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            
+            /* Gradients mit Ihren Farben */
+            --gradient-primary: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-light) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--accent-cyan) 0%, var(--brand-blue) 100%);
+            --gradient-hero: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-light) 50%, var(--accent-light-blue) 100%);
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --border-radius: 1rem;
+            --border-radius-lg: 1.5rem;
+            --spacing: 1rem;
+        }
 
-        gtag('config', 'G-5RTS6Q7W40');
-    </script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 30px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gradient-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Platz für Navigation */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--brand-blue);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            animation: float-logo 6s ease-in-out infinite;
+        }
+
+        @keyframes float-logo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Header Logo Display */
+        .header-logo-section {
+            display: none; /* Entfernt die große Logo-Sektion */
+        }
+
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            animation: float-element 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float-element {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section mit echten Bildern */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .about-stats {
+            display: flex; 
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+            min-width: 200px;
+            border-left: 4px solid var(--brand-blue);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+            display: block;
+        }
+
+        .highlight {
+            color: var(--brand-blue);
+            background-color: rgba(0, 91, 143, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+        }
+
+        /* Skills Grid - 3x3 Layout für 9 Services */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .skill-btn {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        .skill-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Animated Skills Showcase - VIEL SPEKTAKULÄRER */
+        .skills-showcase {
+            background: linear-gradient(45deg, var(--dark), #0f0f23, var(--brand-blue-dark), #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            padding: 4rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .skills-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .skills-showcase-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skills-showcase-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, var(--accent-cyan), #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShine 3s ease-in-out infinite;
+        }
+
+        @keyframes textShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .skills-showcase-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-container {
+            position: relative;
+            height: 180px; /* Mehr Höhe für größeren Abstand */
+        }
+
+        .skills-track {
+            display: flex;
+            animation: scroll 80s linear infinite; /* GESCHWINDIGKEIT HIER ANPASSEN */
+            gap: 2rem;
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        .skills-track:nth-child(1) {
+            top: 0;
+            animation-direction: normal;
+        }
+
+        .skills-track:nth-child(2) {
+            top: 90px;
+            animation-direction: reverse;
+            animation-duration: 90s; /* GESCHWINDIGKEIT UNTERE ZEILE HIER ANPASSEN */
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, 
+                rgba(0, 91, 143, 0.3) 0%, 
+                rgba(5, 242, 219, 0.2) 50%, 
+                rgba(137, 207, 240, 0.3) 100%);
+            backdrop-filter: blur(20px);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-badge:hover::before {
+            left: 100%;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Spezielle Badge-Typen */
+        .skill-badge.certification {
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.3) 0%, 
+                rgba(0, 91, 143, 0.3) 100%);
+            border-color: rgba(255, 107, 53, 0.5);
+        }
+
+        .skill-badge.tech {
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 64, 0.4) 0%, 
+                rgba(0, 129, 203, 0.3) 100%);
+            border-color: rgba(0, 129, 203, 0.5);
+        }
+
+        .skill-badge.soft-skill {
+            background: linear-gradient(135deg, 
+                rgba(5, 242, 219, 0.3) 0%, 
+                rgba(137, 207, 240, 0.3) 100%);
+            border-color: rgba(5, 242, 219, 0.5);
+        }
+
+        .skill-badge.ai {
+            background: linear-gradient(135deg, 
+                rgba(138, 43, 226, 0.3) 0%, 
+                rgba(255, 20, 147, 0.3) 50%,
+                rgba(0, 191, 255, 0.3) 100%);
+            border-color: rgba(138, 43, 226, 0.6);
+            animation: aiGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes aiGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    0 0 20px rgba(138, 43, 226, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    0 0 30px rgba(138, 43, 226, 0.6);
+            }
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Projects Gallery mit Flip-Effekt */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: transparent;
+            border-radius: var(--border-radius-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 300px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .project-card.flipped {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        .project-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .project-card.flipped .project-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .project-card-front,
+        .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .project-card-front {
+            background: var(--white);
+        }
+
+        .project-card-back {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-light) 100%);
+            color: var(--white);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .project-card:hover .project-card-front {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image {
+            position: absolute;
+            inset: 0;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Rückseite Styling */
+        .project-back-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .project-back-description {
+            font-size: 0.8rem;
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .project-back-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-detail-item i {
+            color: var(--accent-cyan);
+            width: 12px;
+            font-size: 0.7rem;
+        }
+
+        .project-back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .flip-hint {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-hint i {
+            font-size: 0.7rem;
+        }
+
+        .project-card:hover .flip-hint {
+            opacity: 1;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background: var(--white);
+            color: var(--brand-blue);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--gray-light);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--gray-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                min-width: auto;
+            }
+            
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth animations */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<nav aria-label="Hauptnavigation">
-    <div class="nav-container">
-        <a href="#home" class="logo">
-            <img src="img/logo_white_transparent.png" alt="Einfach Starten Logo" class="nav-logo">
-        </a>
-        <button class="nav-toggle" aria-label="Menü umschalten">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="nav-links">
-            <a href="#about">Über mich</a>
-            <a href="#offer">Mein Angebot für Sie</a>
-            <a href="#skills-section">Meine Skills</a>
-            <a href="#projects">Projekte</a>
-            <a href="#network">Netzwerk</a>
-            <a href="#booking">Kontakt</a>
-            <button id="darkModeToggle" class="material-toggle">
-                🌙
-            </button>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="img/logo.png" alt="Einfach Starten Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projekte</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <button class="mobile-menu-btn">☰</button>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<header id="home" role="banner">
-    <img src="img/logo.png" alt="Einfach Starten Logo" loading="lazy" class="logo-img">
-    <p class="header-text">
-        Lass uns starten. <br>Einfach. <br>Jetzt.
-    </p>
-    <a href="#booking" class="btn">Jetzt Termin vereinbaren</a>
-</header>
-
-<section id="about" class="section-light">
-    <div class="section-content">
-        <h2>Herzlich willkommen!</h2>
-        <div class="content-wrapper">
-            <img src="img/marcus.jpg" alt="Marcus Braun" loading="lazy" class="responsive-img">
-            <div class="text-content">
-                <p>Ich bin Marcus – ein engagierter Familienmensch, Innovationsenthusiast und erfahrener Manager mit einer besonderen Leidenschaft für <span class="highlight">moderne Führungsstile</span>. Meine Stärke liegt darin, <span class="highlight">visionäre Ideen in die Realität umzusetzen</span>, wobei ich sowohl auf Details achte als auch das große Ganze im Blick behalte. Als Vater von zwei wunderbaren Söhnen und Ehemann schätze ich die <span class="highlight">Balance zwischen Beruf und Familie</span>. In meiner Freizeit findet man mich auf dem Mountainbike in den Bergen oder auf langen Wanderungen mit unserem Familienhund.</p>
-                <p>Seit 2008 bin ich im <span class="highlight">agilen Management</span> verwurzelt und habe mein Fachwissen in verschiedenen Branchen erfolgreich eingesetzt. Mein Fokus liegt darauf, Projekte <span class="highlight">agil, effizient und transparent</span> voranzutreiben. Mit Zertifizierungen als <span class="highlight">Professional Scrum Master (PSM)</span>, <span class="highlight">Professional Scrum Product Owner (PSPO)</span> und <span class="highlight">Certified Professional for Requirements Engineering (CPRE)</span> unterstütze ich Teams dabei, ihre Zusammenarbeit zu optimieren und nachhaltige Werte zu schaffen.</p>
-                <p>Ich bin stolz darauf, Unternehmen und Führungskräfte auf ihrem Weg zum Erfolg zu begleiten. Durch <span class="highlight">maßgeschneiderte Schulungen, Trainings und Workshops</span> gehe ich gezielt auf die individuellen Bedürfnisse Ihres Unternehmens ein. Flexibilität ist für mich selbstverständlich: Ob als <span class="highlight">Interim Manager zur Überbrückung von Personalengpässen</span> oder in Strategieworkshops, in denen wir gemeinsam die Zukunft Ihres Unternehmens gestalten – ich stehe Ihnen zur Seite.</p>
-                <p>Als Verfechter des <span class="highlight">lebenslangen Lernens</span> kooperiere ich gerne mit Universitäten, Hochschulen und Bildungseinrichtungen. Bildung ist für mich der Schlüssel zu einer erfolgreichen Zukunft, und ich freue mich darauf, auch Sie und Ihr Team bei der Erreichung Ihrer Ziele zu unterstützen.</p>
-                <p><span class="highlight">Lassen Sie uns gemeinsam durchstarten</span> – ich freue mich auf die Zusammenarbeit!</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Lass uns starten.<br>Einfach.<br><span style="color: var(--accent-cyan);">Jetzt.</span></h1>
+                <p class="subtitle">Agiles Management, innovative Lösungen und strategische Beratung für Ihr Unternehmen. Mit über 15 Jahren Erfahrung verwandle ich Visionen in Realität.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-calendar"></i>
+                        Termin vereinbaren
+                    </a>
+                    <a href="#about" class="btn-secondary">
+                        <i class="fas fa-arrow-down"></i>
+                        Mehr erfahren
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-elements">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                </div>
+                <img src="img/logo_white_transparent.png" alt="Einfach Starten Logo" class="hero-logo">
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="offer" class="section-light">
-    <div class="section-content">
-        <h2>Mein Angebot für Sie</h2>
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Über mich</h2>
+                <p class="section-subtitle">Agiler Manager, Innovationsenthusiast und Vater von zwei wunderbaren Söhnen</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/marcus.jpg" alt="Marcus Braun">
+                </div>
+                <div class="about-text">
+                    <p>Ich bin Marcus – ein engagierter Familienmensch, Innovationsenthusiast und erfahrener Manager mit einer besonderen Leidenschaft für <span class="highlight">moderne Führungsstile</span>. Meine Stärke liegt darin, <span class="highlight">visionäre Ideen in die Realität umzusetzen</span>, wobei ich sowohl auf Details achte als auch das große Ganze im Blick behalte.</p>
+                    
+                    <p>Seit 2008 bin ich im <span class="highlight">agilen Management</span> verwurzelt und habe mein Fachwissen in verschiedenen Branchen erfolgreich eingesetzt. Mit Zertifizierungen als <span class="highlight">Professional Scrum Master (PSM)</span>, <span class="highlight">Professional Scrum Product Owner (PSPO)</span> und <span class="highlight">Certified Professional for Requirements Engineering (CPRE)</span> unterstütze ich Teams dabei, ihre Zusammenarbeit zu optimieren.</p>
+                    
+                    <p>Als Verfechter des <span class="highlight">lebenslangen Lernens</span> kooperiere ich gerne mit Universitäten, Hochschulen und Bildungseinrichtungen. <span class="highlight">Lassen Sie uns gemeinsam durchstarten</span> – ich freue mich auf die Zusammenarbeit!</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">15+ Jahre</span>
+                            Agile Erfahrung
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">3 Zertifizierungen</span>
+                            PSM, PSPO, CPRE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mein Angebot für Sie</h2>
+                <p class="section-subtitle">Maßgeschneiderte Lösungen für Ihre Herausforderungen</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="skill-title">AI Talks</h3>
+                    <p class="skill-description">Künstliche Intelligenz fasziniert mich seit Jahren und ich beschäftige mich exzessiv mit den neuesten Entwicklungen, Tools und Anwendungsmöglichkeiten. Gerne teile ich meine Erkenntnisse in spannenden Talks und führe inspirierende Diskussionen über die Zukunft der AI.</p>
+                    <a href="#contact" class="skill-btn">Talk buchen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="skill-title">Agile Methoden & kreative Techniken</h3>
+                    <p class="skill-description">Seit 2008 habe ich umfangreiche Erfahrung im agilen Management und als aktiver Teil von agilen Teams weltweit gesammelt. Diese Erfahrung setze ich ein, um Ihr Projekt agil, effizient und transparent voranzubringen.</p>
+                    <a href="#contact" class="skill-btn">Termin buchen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="skill-title">Professional Scrum Master (PSM)</h3>
+                    <p class="skill-description">Ich habe viel Leidenschaft, fundiertes Wissen, jahrelange Erfahrung und natürlich auch eine Zertifizierung als Scrum Master. Ich unterstütze Ihre Scrum Teams gerne dabei, agile Prozesse effizient umzusetzen.</p>
+                    <a href="#contact" class="skill-btn">Team optimieren</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="skill-title">Professional Scrum Product Owner (PSPO)</h3>
+                    <p class="skill-description">Mit meiner jahrelangen und aktiven Erfahrung kann ich für Sie die Rolle des zertifizierten Product Owners übernehmen und den Mehrwert Ihres Produkts oder Projekts maximieren.</p>
+                    <a href="#contact" class="skill-btn">Produkt entwickeln</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="skill-title">Professional Requirements Engineering</h3>
+                    <p class="skill-description">Ich habe tiefe und praxisbewährte Kenntnisse in der Erfassung, Spezifikation und Verwaltung von Anforderungen, um erfolgreiche und komplexe Produkte IREB-zertifiziert für Sie zu entwickeln.</p>
+                    <a href="#contact" class="skill-btn">Anforderungen managen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="skill-title">Schulungen / Training</h3>
+                    <p class="skill-description">Ich arbeite in vielen Bildungsprojekten, als Gastdozent an Bildungseinrichtungen und Trainer bei Geschäftspartnern. Gerne gebe ich mein Wissen an Sie oder Ihre Mitarbeitenden weiter.</p>
+                    <a href="#contact" class="skill-btn">Team schulen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="skill-title">Workshops</h3>
+                    <p class="skill-description">Für jeden Workshop übernehme ich die Vorbereitung, Moderation und Dokumentation, maßgeschneidert auf die Bedürfnisse Ihres Unternehmens oder Teams.</p>
+                    <a href="#contact" class="skill-btn">Workshop buchen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="skill-title">Interim Management</h3>
+                    <p class="skill-description">Als Interim Manager biete ich Ihnen flexible und kompetente Unterstützung in Führungspositionen, um Engpässe zu überbrücken, Veränderungsprozesse zu begleiten oder spezielle Projekte zu leiten.</p>
+                    <a href="#contact" class="skill-btn">Unterstützung anfragen</a>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3 class="skill-title">Strategieworkshop</h3>
+                    <p class="skill-description">In diesem maßgeschneiderten Workshop erarbeiten wir gemeinsam eine Strategie für Ihr Produkt, Projekt oder Unternehmen, damit jeder Mitarbeitende weiß, auf welches Ziel er hinarbeitet.</p>
+                    <a href="#contact" class="skill-btn">Strategie entwickeln</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Showcase -->
+    <section class="skills-showcase" id="skills">
+        <div class="skills-showcase-header">
+            <h2 class="skills-showcase-title">Skills & Expertise</h2>
+            <p class="skills-showcase-subtitle">Entdecken Sie meine umfangreiche Palette an Kompetenzen und Zertifizierungen</p>
+        </div>
         <div class="skills-container">
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
-                    <div class="skill-title">Agile Methoden & kreative Techniken</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Seit 2008 habe ich umfangreiche Erfahrung im agilen Management und als aktiver Teil von agilen Teams weltweit gesammelt. Diese Erfahrung setze ich ein, um Ihr Projekt agil, effizient und transparent voranzubringen.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
+            <div class="skills-track">
+                <div class="skill-badge certification">Professional Scrum Master (PSM)</div>
+                <div class="skill-badge certification">Professional Scrum Product Owner (PSPO)</div>
+                <div class="skill-badge certification">Certified Requirements Engineer (CPRE)</div>
+                <div class="skill-badge soft-skill">Agiles Management</div>
+                <div class="skill-badge soft-skill">Leadership</div>
+                <div class="skill-badge soft-skill">Coaching</div>
+                <div class="skill-badge soft-skill">Strategic Thinking</div>
+                <div class="skill-badge soft-skill">Kreativität</div>
+                <div class="skill-badge soft-skill">Empathie</div>
+                <div class="skill-badge soft-skill">Flexibilität</div>
+                <div class="skill-badge soft-skill">Mentoring</div>
+                <!-- Duplicate für nahtlose Schleife -->
+                <div class="skill-badge certification">Professional Scrum Master (PSM)</div>
+                <div class="skill-badge certification">Professional Scrum Product Owner (PSPO)</div>
+                <div class="skill-badge certification">Certified Requirements Engineer (CPRE)</div>
+                <div class="skill-badge soft-skill">Agiles Management</div>
+                <div class="skill-badge soft-skill">Leadership</div>
+                <div class="skill-badge soft-skill">Coaching</div>
+                <div class="skill-badge soft-skill">Strategic Thinking</div>
+                <div class="skill-badge soft-skill">Kreativität</div>
+                <div class="skill-badge soft-skill">Empathie</div>
+                <div class="skill-badge soft-skill">Flexibilität</div>
+                <div class="skill-badge soft-skill">Mentoring</div>
             </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="skill-title">Professional Scrum Master (PSM)</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Ich habe viel Leidenschaft, fundiertes Wissen, jahrelange Erfahrung und natürlich auch eine Zertifizierung als Scrum Master. Ich unterstütze Ihre Scrum Teams gerne dabei, agile Prozesse effizient umzusetzen.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-user-check"></i></div>
-                    <div class="skill-title">Professional Scrum Product Owner (PSPO)</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Mit meiner jahrelangen und aktiven Erfahrung kann ich für Sie die Rolle des zertifizierten Product Owners übernehmen und den Mehrwert Ihres Produkts oder Projekts maximieren.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-tools"></i></div>
-                    <div class="skill-title">Professional Requirements Engineering</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Ich habe tiefe und praxisbewährte Kenntnisse in der Erfassung, Spezifikation und Verwaltung von Anforderungen, um erfolgreiche und komplexe Produkte IREB-zertifiziert für Sie zu entwickeln.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
-                    <div class="skill-title">Schulungen / Training</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Ich arbeite in vielen Bildungsprojekten, als Gastdozent an Bildungseinrichtungen und Trainer bei Geschäftspartnern. Gerne gebe ich mein Wissen an Sie oder Ihre Mitarbeitenden weiter.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <div class="skill-title">Workshops</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Für jeden Workshop übernehme ich die Vorbereitung, Moderation und Dokumentation, maßgeschneidert auf die Bedürfnisse Ihres Unternehmens oder Teams.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
-                    <div class="skill-title">Interim Management</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>Als Interim Manager biete ich Ihnen flexible und kompetente Unterstützung in Führungspositionen, um Engpässe zu überbrücken, Veränderungsprozesse zu begleiten oder spezielle Projekte zu leiten.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">
-                    <div class="skill-icon"><i class="fas fa-flag"></i></div>
-                    <div class="skill-title">Strategieworkshop</div>
-                </div>
-                <div class="skill-card-content">
-                    <p>In diesem maßgeschneiderten Workshop erarbeiten wir gemeinsam eine Strategie für Ihr Produkt, Projekt oder Unternehmen, damit jeder Mitarbeitende weiß, auf welches Ziel er hinarbeitet.</p>
-                    <a href="#booking" class="btn btn-small">Termin buchen</a>
-                </div>
+            <div class="skills-track">
+                <div class="skill-badge tech">Python</div>
+                <div class="skill-badge tech">Azure</div>
+                <div class="skill-badge tech">Terraform</div>
+                <div class="skill-badge tech">Jira</div>
+                <div class="skill-badge tech">Confluence</div>
+                <div class="skill-badge tech">HTML/CSS</div>
+                <div class="skill-badge tech">JavaScript</div>
+                <div class="skill-badge tech">RESTful API</div>
+                <div class="skill-badge ai">Artificial Intelligence</div>
+                <div class="skill-badge ai">Machine Learning</div>
+                <div class="skill-badge ai">ChatGPT & LLMs</div>
+                <div class="skill-badge ai">AI Strategy</div>
+                <div class="skill-badge soft-skill">Problem Solving</div>
+                <div class="skill-badge soft-skill">Kundenzentrierung</div>
+                <!-- Duplicate für nahtlose Schleife -->
+                <div class="skill-badge tech">Python</div>
+                <div class="skill-badge tech">Azure</div>
+                <div class="skill-badge tech">Terraform</div>
+                <div class="skill-badge tech">Jira</div>
+                <div class="skill-badge tech">Confluence</div>
+                <div class="skill-badge tech">HTML/CSS</div>
+                <div class="skill-badge tech">JavaScript</div>
+                <div class="skill-badge tech">RESTful API</div>
+                <div class="skill-badge ai">Artificial Intelligence</div>
+                <div class="skill-badge ai">Machine Learning</div>
+                <div class="skill-badge ai">ChatGPT & LLMs</div>
+                <div class="skill-badge ai">AI Strategy</div>
+                <div class="skill-badge soft-skill">Problem Solving</div>
+                <div class="skill-badge soft-skill">Kundenzentrierung</div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="skills-section" class="section-light">
-    <div class="section-content">
-        <h2>Meine Skills</h2>
-        <p class="skills-description">
-            Erkunden Sie die umfangreiche Palette meiner Soft Skills und technischen Kompetenzen. Es ist ein gut gefüllter, professioneller Werkzeugkasten, auf den ich zurückgreifen kann, um Ihre Projekte, Visionen und Ziele erfolgreich in die Tat umzusetzen.<br>
-            Speziell die Liste der technischen Kompetenzen wächst Tag für Tag, da ich mich ständig up to date halte.
-        </p>
-        <div class="scroll-container" id="scrollContainerSkills">
-            <div class="skills-wrapper" id="skillsWrapper">
-                <div class="skill-box">Agiles<br> Management</div>
-                <div class="skill-box">Kreativität</div>
-                <div class="skill-box">Effiziente<br> Kommunikation</div>
-                <div class="skill-box">Empathie</div>
-                <div class="skill-box">Flexibilität</div>
-                <div class="skill-box">Mentoring</div>
-                <div class="skill-box">Leadership</div>
-                <div class="skill-box">Coaching</div>
-                <div class="skill-box">Problem<br>Solving</div>
-                <div class="skill-box">Lebenslanges<br>Lernen</div>
-                <div class="skill-box">Kunden-<br>zentrierung</div>
-                <div class="skill-box">Strategisches<br> Denken</div>
-                <div class="skill-box">Selbstmanagement</div>
-                <div class="skill-box">Organisation</div>
-                <div class="skill-box">Kommunikation</div>
-                <div class="skill-box">Detailtreue</div>
-                <div class="skill-box">Laterale<br>Führung</div>
+    <!-- Projects Section -->
+    <section class="section section-alt" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projekterfahrung</h2>
+                <p class="section-subtitle">Einblicke in spannende Projekte und innovative Lösungen</p>
             </div>
-        </div>
-        <div class="scroll-container" id="scrollContainerTech">
-            <div class="tech-wrapper" id="techWrapper">
-                <div class="tech-box">Professional<br>Scrum Master<br>(PSM)</div>
-                <div class="tech-box">Professional<br> Scrum Product<br>Owner (PSPO)</div>
-                <div class="tech-box">Certified<br>Requirements<br>Engineer (CPRE)</div>
-                <div class="tech-box">Python</div>
-                <div class="tech-box">Slack</div>
-                <div class="tech-box">Microsoft Teams</div>
-                <div class="tech-box">Zoom</div>
-                <div class="tech-box">Google Meet</div>
-                <div class="tech-box">Webex</div>
-                <div class="tech-box">Terraform</div>
-                <div class="tech-box">Azure</div>
-                <div class="tech-box">Repl.it</div>
-                <div class="tech-box">HTML</div>
-                <div class="tech-box">CSS</div>
-                <div class="tech-box">JavaScript</div>
-                <div class="tech-box">Postman</div>
-                <div class="tech-box">JSON</div>
-                <div class="tech-box">RESTful API</div>
-                <div class="tech-box">GraphQL</div>
-                <div class="tech-box">SOAP</div>
-                <div class="tech-box">NoSQL</div>
-                <div class="tech-box">Jira</div>
-                <div class="tech-box">Confluence</div>
-                <div class="tech-box">Trello</div>
-                <div class="tech-box">Asana</div>
-                <div class="tech-box">Basecamp</div>
-                <div class="tech-box">Monday.com</div>
-                <div class="tech-box">Windows</div>  
-                <div class="tech-box">Linux</div>
-                <div class="tech-box">MacOS</div>
-                <div class="tech-box">Microsoft<br>Word</div>
-                <div class="tech-box">Microsoft<br>Excel</div>
-                <div class="tech-box">Microsoft<br>PowerPoint</div>
-                <div class="tech-box">Google Docs</div>
-                <div class="tech-box">Google Sheets</div>
-                <div class="tech-box">Google Slides</div>
-                <div class="tech-box">Miro</div>
-                <div class="tech-box">Figma</div>
-                <div class="tech-box">Draw.io</div>
-                <div class="tech-box">Markdown</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="projects" class="section-light">
-    <div class="section-content">
-        <h2>Meine Projekterfahrung</h2>
-        <p class="projects-description">
-            Entdecken Sie eine Auswahl spannender Projekte, die ich im Laufe meiner Karriere realisiert habe. Hier können Sie Einblicke in meine bisherigen Tätigkeiten gewinnen und mehr darüber erfahren, wie ich komplexe Herausforderungen meistere und innovative Lösungen entwickle.
-        </p>
-        
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">ADAC Connected Car</h3>
-                <p>Zusammen mit einem Projektteam und einem Entwicklungsteam implementiere ich ein Connected Car Backend.</p>
-            </div>
-            <img src="img/project0.jpg" alt="ADAC Connected Car" loading="lazy">
-        </div>
-        
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">ÖAMTC FutureLab</h3>
-                <p>Leitung eines Pilotprojekts zur Entwicklung einer Co-Creation Plattform.</p>
-            </div>
-            <img src="img/project2.jpg" alt="ÖAMTC FutureLab Projekt" loading="lazy">
-        </div>
-        
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">Intelematics Europe</h3>
-                <p>Gründung eines internationalen Joint Ventures für Connected Car Lösungen. Von diesem wurden maßgeschneiderte Mobilitätslösungen für europäische Automobilclubs entwickelt.</p>
-            </div>
-            <img src="img/project3.jpg" alt="Intelematics Europe Projekt" loading="lazy">
-        </div>
-
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">Produktlaunch ÖAMTC Smart Connect</h3>
-                <p>Entwicklung, Pilotierung und letztendlich kommerzieller Launch des ersten Connected Car Produkts des ÖAMTC. Auszeichnung mit dem FIA Innovation Award.</p>
-            </div>
-            <img src="img/project4.jpg" alt="ÖAMTC Smart Connect Projekt" loading="lazy">
-        </div>
-
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">Limerick Tunnel</h3>
-                <p>System Engineering und Projektleitung für ein autonomes Erkennungssystem in einem Tunnelbetrieb.</p>
-            </div>
-            <img src="img/project1.jpg" alt="Limerick Tunnel Projekt" loading="lazy">
-        </div>
-        
-        <div class="project-card">
-            <div class="project-overlay">
-                <h3 class="project-title">Relaunch Kapsch Incident Detection 2.0</h3>
-                <p>Das Videodetektionssystem der Kapsch TrafficCom AG wurde unter meiner Leitung relauncht und gewann den Intertraffic Innovation Award.</p>
-            </div>
-            <img src="img/project5.jpg" alt="ÖAMTC Smart Connect Projekt" loading="lazy">
-        </div>
-    </div>
-</section>
-
-<section id="network" class="section-light">
-    <div class="section-content">
-        <h2>Netzwerk</h2>
-        <p class="network-description">
-            Bleiben Sie auf dem Laufenden und vernetzen Sie sich mit mir! Abonnieren Sie meinen Newsletter, um exklusive Einblicke, Tipps und Updates direkt in Ihr Postfach zu erhalten. Gemeinsam können wir ein starkes Netzwerk aufbauen und voneinander profitieren.
-        </p>
-        <div id="mc_embed_signup">
-            <form action="https://jetzt.us2.list-manage.com/subscribe/post?u=a8f5b360061eaec92a28eeb47&amp;id=b0d0f469c6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <div id="mc_embed_signup_scroll">
-                    <div class="mc-field-group">
-                        <label for="mce-EMAIL">Email Adresse <span class="asterisk">*</span></label>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+            <div class="projects-grid">
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project0.jpg" alt="ADAC Connected Car" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">ADAC Connected Car</h3>
+                                <p class="project-description">Zusammen mit einem Projektteam und einem Entwicklungsteam implementiere ich ein Connected Car Backend.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">ADAC Connected Car</h3>
+                            <p class="project-back-description">Ein innovatives Connected Car Backend-System, das Fahrzeugdaten in Echtzeit verarbeitet und intelligente Services für ADAC-Mitglieder bereitstellt. Als Projektleiter koordiniere ich die agile Entwicklung mit internationalen Teams.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Laufzeit: 2023 - laufend</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Team: 12 Entwickler, 3 POs</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Tech: Azure, Python, REST APIs</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-envelope"></i>
+                                Projekt besprechen
+                            </a>
+                        </div>
                     </div>
-                    <div id="mce-responses" class="clear">
-                        <div class="response" id="mce-error-response" style="display:none"></div>
-                        <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project2.jpg" alt="ÖAMTC FutureLab" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">ÖAMTC FutureLab</h3>
+                                <p class="project-description">Leitung eines Pilotprojekts zur Entwicklung einer Co-Creation Plattform.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">ÖAMTC FutureLab</h3>
+                            <p class="project-back-description">Entwicklung einer digitalen Co-Creation Plattform zur Förderung von Innovationen. Das FutureLab ermöglicht es Mitarbeitern und Kunden, gemeinsam an zukunftsweisenden Mobilitätslösungen zu arbeiten.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Laufzeit: 2022 - 2023</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Innovation & Design Thinking</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-award"></i>
+                                    <span>Status: Erfolgreich gelauncht</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-rocket"></i>
+                                Innovation starten
+                            </a>
+                        </div>
                     </div>
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_a8f5b360061eaec92a28eeb47_b0d0f469c6" tabindex="-1" value="">
+                </div>
+                
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project3.jpg" alt="Intelematics Europe" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">Intelematics Europe</h3>
+                                <p class="project-description">Gründung eines internationalen Joint Ventures für Connected Car Lösungen für europäische Automobilclubs.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">Intelematics Europe</h3>
+                            <p class="project-back-description">Strategische Gründung und Aufbau eines europaweiten Joint Ventures für Connected Car Services. Koordination zwischen verschiedenen Automobilclubs und Entwicklung einheitlicher Standards für ganz Europa.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-globe-europe"></i>
+                                    <span>Scope: Europaweite Expansion</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Joint Venture Management</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Connected Car Expertise</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-globe"></i>
+                                Partnership erkunden
+                            </a>
+                        </div>
                     </div>
-                    <div class="clear">
-                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">
+                </div>
+                
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project4.jpg" alt="ÖAMTC Smart Connect" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">ÖAMTC Smart Connect</h3>
+                                <p class="project-description">Entwicklung und Launch des ersten Connected Car Produkts des ÖAMTC - ausgezeichnet mit dem FIA Innovation Award.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">ÖAMTC Smart Connect</h3>
+                            <p class="project-back-description">Erfolgreiche Entwicklung und Markteinführung des ersten Connected Car Produkts in Österreich. Das Projekt wurde mit dem prestigeträchtigen FIA Innovation Award ausgezeichnet und setzt neue Standards in der Branche.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>FIA Innovation Award Winner</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>First-to-Market in Österreich</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Kommerziell erfolgreich</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-star"></i>
+                                Award-Projekt besprechen
+                            </a>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project1.jpg" alt="Limerick Tunnel" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">Limerick Tunnel</h3>
+                                <p class="project-description">System Engineering und Projektleitung für ein autonomes Erkennungssystem in einem Tunnelbetrieb.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">Limerick Tunnel</h3>
+                            <p class="project-back-description">Komplexes System Engineering Projekt für autonome Incident Detection im Limerick Tunnel, Irland. Entwicklung intelligenter Erkennungssysteme für kritische Infrastruktur mit höchsten Sicherheitsanforderungen.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Kritische Infrastruktur</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Computer Vision & AI</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>Verkehrsmanagement</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-cogs"></i>
+                                Technik diskutieren
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" onclick="flipCard(this)">
+                    <div class="project-card-inner">
+                        <div class="project-card-front">
+                            <div class="project-image">
+                                <img src="img/project5.jpg" alt="Kapsch Incident Detection 2.0" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3 class="project-title">Kapsch Incident Detection 2.0</h3>
+                                <p class="project-description">Das Videodetektionssystem der Kapsch TrafficCom AG wurde unter meiner Leitung relauncht und gewann den Intertraffic Innovation Award.</p>
+                            </div>
+                            <div class="flip-hint">
+                                <i class="fas fa-info"></i>
+                            </div>
+                        </div>
+                        <div class="project-card-back">
+                            <h3 class="project-back-title">Kapsch Incident Detection 2.0</h3>
+                            <p class="project-back-description">Kompletter Relaunch des Videodetektionssystems mit modernster KI-Technologie. Das System revolutioniert die automatische Verkehrsüberwachung und wurde mit dem Intertraffic Innovation Award ausgezeichnet.</p>
+                            <div class="project-back-details">
+                                <div class="project-detail-item">
+                                    <i class="fas fa-medal"></i>
+                                    <span>Intertraffic Innovation Award</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>Computer Vision & Deep Learning</span>
+                                </div>
+                                <div class="project-detail-item">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <span>Complete System Relaunch</span>
+                                </div>
+                            </div>
+                            <a href="#contact" class="project-back-btn">
+                                <i class="fas fa-award"></i>
+                                Innovation besprechen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter" id="newsletter">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Bleiben Sie auf dem Laufenden</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Exklusive Einblicke, Tipps und Updates direkt in Ihr Postfach</p>
+            </div>
+            <form class="newsletter-form" action="https://jetzt.us2.list-manage.com/subscribe/post?u=a8f5b360061eaec92a28eeb47&amp;id=b0d0f469c6" method="post" target="_blank">
+                <input type="email" name="EMAIL" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" required>
+                <button type="submit" class="newsletter-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Abonnieren
+                </button>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_a8f5b360061eaec92a28eeb47_b0d0f469c6" tabindex="-1" value="">
                 </div>
             </form>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="booking" class="section-light">
-    <div class="section-content">
-        <h2>Terminvereinbarung</h2>
-        <iframe src="https://einfachstarten.youcanbook.me/" allowfullscreen title="Terminvereinbarung"></iframe>
-        <a href="#home" class="btn">Zurück nach oben</a>
-    </div>
-</section>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lassen Sie uns starten</h2>
+                <p class="section-subtitle">Vereinbaren Sie noch heute einen Termin für Ihr nächstes Projekt</p>
+            </div>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="background: white; border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-xl); height: 600px;">
+                    <iframe src="https://einfachstarten.youcanbook.me/" 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border: none;"
+                            title="Terminvereinbarung">
+                    </iframe>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#home" class="btn-primary">
+                        <i class="fas fa-arrow-up"></i>
+                        Zurück nach oben
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <p>Marcus Braun<br>
+                    Einfach Starten AMB Dienstleistungs KG<br>
+                    Am Gries 40, 3500 Imbach<br>
+                    <a href="mailto:marcus@einfachstarten.jetzt">marcus@einfachstarten.jetzt</a><br>
+                    <a href="tel:+436606913321">+43 660 691 3321</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#services">Agile Methoden</a><br>
+                    <a href="#services">Scrum Master Services</a><br>
+                    <a href="#services">Product Owner</a><br>
+                    <a href="#services">Interim Management</a><br>
+                    <a href="#services">Schulungen & Training</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Zertifizierungen</h3>
+                    <p>Professional Scrum Master (PSM)<br>
+                    Professional Scrum Product Owner (PSPO)<br>
+                    Certified Professional for Requirements Engineering (CPRE)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Einfach Starten. Alle Rechte vorbehalten.</p>
+                <p><a href="impressum.html">Impressum & Datenschutz</a></p>
+            </div>
+        </div>
+    </footer>
 
-<footer>
-    <p>&copy; 2024 Einfach Starten. Alle Rechte vorbehalten.</p>
-</footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const navLinkItems = document.querySelectorAll('.nav-links a');
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
-        navLinkItems.forEach(function(link) {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('nav');
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                navbar.classList.add('hide');
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            
+            if (isDark) {
+                document.documentElement.style.setProperty('--white', '#1a1a2e');
+                document.documentElement.style.setProperty('--light', '#16213e');
+                document.documentElement.style.setProperty('--dark', '#ffffff');
+                document.documentElement.style.setProperty('--gray', '#94a3b8');
+                themeToggle.textContent = '☀️';
+                document.body.style.background = '#0f172a';
             } else {
-                navbar.classList.remove('hide');
-                if (scrollTop > 50) {
-                    navbar.classList.add('shrink');
-                } else {
-                    navbar.classList.remove('shrink');
+                document.documentElement.style.setProperty('--white', '#ffffff');
+                document.documentElement.style.setProperty('--light', '#f8fafc');
+                document.documentElement.style.setProperty('--dark', '#1a1a2e');
+                document.documentElement.style.setProperty('--gray', '#64748b');
+                themeToggle.textContent = '🌙';
+                document.body.style.background = '';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }
-            lastScrollTop = scrollTop;
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.skill-card, .project-card, .section-header').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
-        function duplicateContent(wrapper) {
-            while (wrapper.scrollWidth < window.innerWidth * 2) {
-                wrapper.innerHTML += wrapper.innerHTML;
-            }
+
+        // Add mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(255, 255, 255, 0.98)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = 'var(--shadow-lg)';
+            navLinks.style.backdropFilter = 'blur(20px)';
+            navLinks.style.borderRadius = '0 0 1rem 1rem';
+        });
+
+        // Flip Card Funktionalität
+        function flipCard(card) {
+            card.classList.toggle('flipped');
         }
-        const skillsWrapper = document.getElementById('skillsWrapper');
-        const techWrapper = document.getElementById('techWrapper');
-        let positionSkills = 0;
-        let speedSkills = 0.5;
-        let positionTech = 0;
-        let speedTech = 0.6;
-        duplicateContent(skillsWrapper);
-        duplicateContent(techWrapper);
-        function animateSkills() {
-            positionSkills -= speedSkills;
-            if (positionSkills <= -skillsWrapper.scrollWidth / 2) {
-                positionSkills = 0;
-            }
-            skillsWrapper.style.transform = `translateX(${positionSkills}px)`;
-            requestAnimationFrame(animateSkills);
-        }
-        document.getElementById('scrollContainerSkills').addEventListener('mouseenter', () => {
-            speedSkills = 0.2;
+
+        // Enhanced project card interactions
+        document.querySelectorAll('.project-card').forEach(card => {
+            // Entfernt die alten Hover-Effekte da wir jetzt Click-to-Flip haben
         });
-        document.getElementById('scrollContainerSkills').addEventListener('mouseleave', () => {
-            speedSkills = 0.5;
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
-        function animateTech() {
-            positionTech -= speedTech;
-            if (positionTech <= -techWrapper.scrollWidth / 2) {
-                positionTech = 0;
-            }
-            techWrapper.style.transform = `translateX(${positionTech}px)`;
-            requestAnimationFrame(animateTech);
-        }
-        document.getElementById('scrollContainerTech').addEventListener('mouseenter', () => {
-            speedTech = 0.3;
+
+        // Parallax effect for floating elements (subtle)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const floatingElements = document.querySelectorAll('.floating-element');
+            
+            floatingElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
         });
-        document.getElementById('scrollContainerTech').addEventListener('mouseleave', () => {
-            speedTech = 0.6;
-        });
-        animateSkills();
-        animateTech();
-    });
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeOverlay = document.getElementById('darkModeOverlay');
-
-    // Toggle dark mode overlay
-    darkModeToggle.addEventListener('click', function() {
-        darkModeOverlay.classList.toggle('active');
-    });
-
-    // Update flashlight position on mouse move
-    document.addEventListener('mousemove', function(event) {
-        if (darkModeOverlay.classList.contains('active')) {
-            const x = event.clientX + 'px';
-            const y = event.clientY + 'px';
-            darkModeOverlay.style.setProperty('--mouse-x', x);
-            darkModeOverlay.style.setProperty('--mouse-y', y);
-        }
-    });
-});
-</script>
-
-<div id="darkModeOverlay"></div>
-
+    </script>
 </body>
 </html>
