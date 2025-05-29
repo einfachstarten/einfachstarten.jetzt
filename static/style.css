@@ -1,0 +1,699 @@
+/* ==============================
+   Farbvariablen
+   ============================== */
+
+   :root {
+    --brand-blue: #005b8f;
+    --brand-blue-dark: #00407a;
+    --white: #ffffff;
+    --light-gray: #f0f0f0;
+    --dark-gray: #333333;
+    --accent-color: #0084CA;
+    --skill-card-bg: #eaeaea;
+    --skill-card-header-bg: var(--brand-blue);
+    --skill-card-header-color: var(--white);
+    --btn-bg: var(--brand-blue);
+    --btn-hover-bg: var(--brand-blue-dark);
+    --btn-color: var(--white);
+    --network-bg: #f9f9f9;
+    --project-card-bg: #ffffff;
+    --footer-bg: var(--brand-blue);
+    --footer-color: var(--white);
+}
+
+/* ==============================
+   Global Styles
+   ============================== */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    color: var(--dark-gray);
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-color: var(--light-gray);
+}
+
+/* ==============================
+   Navigation Styles
+   ============================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--brand-blue);
+    color: var(--white);
+    z-index: 1000;
+    transition: background 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Zentriert die Elemente vertikal */
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #05F2DB;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5em;
+}
+
+.logo {
+    font-size: 1.5em;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Logo in der Navigation */
+.nav-logo {
+    height: 40px; /* Passe die Größe des Logos an, wie es am besten passt */
+    width: auto;
+}
+
+.logo img {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--brand-blue);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+    .nav-links a {
+        padding: 10px 0;
+    }
+    .nav-toggle {
+        display: block;
+    }
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+nav.shrink {
+    padding: 5px 20px;
+    background: rgba(0, 91, 143, 0.9);
+}
+
+nav.hide {
+    transform: translateY(-100%);
+}
+
+/* Material Design Toggle Button */
+.material-toggle {
+    position: relative;
+    top: 0;
+    align-self: center; /* Zentriert das Icon auf der gleichen Höhe wie die Menü-Items */
+    width: 40px; /* Größe an die Menü-Items angepasst */
+    height: 40px;
+    background-color: var(--brand-blue); /* Matches navigation bar color */
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2em; /* Adjust font size to fit the button */
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-left: 1em; /* Adds spacing from the last menu item */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover and active states for the toggle button */
+.material-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.material-toggle:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.material-toggle.active {
+    background-color: var(--brand-blue-dark); /* Darker color when active */
+    color: var(--white);
+}
+
+/* ==============================
+   Header Styles
+   ============================== */
+
+header {
+    position: relative;
+    height: 100vh;
+    color: var(--dark-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+    background: linear-gradient(45deg, #a0e1ff, #ffffff, #a0e1ff, #ffffff, #a0e1ff);
+    background-size: 300% 300%;
+    animation: cloudAnimation 20s ease infinite;
+}
+
+@keyframes cloudAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header .logo-img {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.header-text {
+    color: #00334f;
+    font-size: 10pt;
+    font-weight: lighter;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1em 2em;
+    margin-top: 1.5em;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(255, 223, 128, 0.5);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(255, 223, 128, 0.7);
+}
+
+.btn-small {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 0.9em;
+}
+
+.btn-small:hover {
+    background-color: var(--btn-hover-bg);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   Section Styles
+   ============================== */
+
+section {
+    width: 100%;
+    padding: 100px 0;
+    margin: 0;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-light {
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ==============================
+   About Section Styles
+   ============================== */
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.responsive-img {
+    flex: 1 1 300px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.text-content {
+    flex: 1 1 300px;
+    padding: 20px;
+}
+
+.highlight {
+    color: #0056b3;
+    background-color: #e2f0ff;
+}
+
+/* ==============================
+   Skills Section Styles
+   ============================== */
+
+   .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.skill-card {
+    border: none;
+    border-radius: 12px; /* Abgerundete Ecken */
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Subtiler Schatten */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+    background: linear-gradient(to bottom right, #fefefe, #eaeaea); /* Leichter Verlauf für Tiefe */
+    position: relative;
+    padding: 0; /* Keine Innenabstände */
+}
+
+.skill-card:hover {
+    transform: scale(1.05); /* Leichter Zoom-Effekt */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Verstärkter Schatten beim Hover */
+}
+
+/* Dekorative Ecken */
+.skill-card::before,
+.skill-card::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.skill-card::before {
+    top: 10px;
+    left: 10px;
+}
+
+.skill-card::after {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Randloser Header der Skill Cards */
+.skill-card-header {
+    background-color: var(--skill-card-header-bg); /* Blau, randlos */
+    color: var(--skill-card-header-color);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight:normal;
+    border: 1px;
+    box-shadow: none; /* Kein Schatten für den Header */
+    margin: 0; /* Keine Außenabstände */
+    border-radius: 0; /* Entfernt Abrundungen */
+}
+
+.skill-card-header .skill-icon {
+    color: var(--skill-card-header-color);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.skill-card-header .skill-title {
+    font-size: 1.3em;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Schimmer für den Titel */
+}
+
+/* Inhalt der Skill Cards */
+.skill-card-content {
+    padding: 20px;
+    text-align: center;
+    font-size: 1em;
+    border: 1px;
+    color: #555;
+}
+
+.skill-card-content p {
+    margin-bottom: 15px;
+}
+
+/* Button innerhalb der Skill Cards */
+.skill-card-content .btn-small {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    background: linear-gradient(45deg, #005b8f, #0084CA);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card-content .btn-small:hover {
+    background: linear-gradient(45deg, #00407a, #005b8f);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================
+   Soft Skills Scrollbox Styles
+   ============================== */
+
+   #scrollContainerSkills {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0;
+    background-color: var(--white);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.skills-wrapper {
+    display: flex;
+    white-space: nowrap;
+    transition: transform 0.1s linear;
+}
+
+.skill-box {
+    display: flex;
+    width: 140px;
+    height: 80px;
+    margin: 0 15px;
+    background: linear-gradient(to bottom right, #0081cb, #89CFF0); /* Soft Skills Gradient */
+    color: var(--white);
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 6px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-box:hover {
+    transform: scale(1.05);
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.3), 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================
+   Tech Stack Scrollbox Styles
+   ============================== */
+
+#scrollContainerTech {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0;
+    background-color: var(--white);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.tech-wrapper {
+    display: flex;
+    white-space: nowrap;
+    transition: transform 0.1s linear;
+}
+
+.tech-box {
+    display: flex;
+    width: 140px;
+    height: 80px;
+    margin: 0 15px;
+    background: linear-gradient(to bottom right, #1a1a40, #0081cb); /* Tech Stack Gradient */
+    color: var(--white);
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2), 0px 6px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-box:hover {
+    transform: scale(1.05);
+    box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.3), 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================
+   Netzwerk-Abschnitt Styles
+   ============================== */
+
+.network-description {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+#mc_embed_signup {
+    background: var(--network-bg);
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#mc_embed_signup input[type="submit"] {
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+#mc_embed_signup input[type="submit"]:hover {
+    background-color: var(--btn-hover-bg);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   Project Overlay Styles
+   ============================== */
+
+   .project-card {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+    height: 300px; /* Feste Höhe für alle Projektkarten */
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Bild wird zentriert und zugeschnitten */
+    object-position: center; /* Fokus auf die Bildmitte */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1); /* Zoom-Effekt beim Hover */
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dunkler, halbtransparenter Layer */
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 1; /* Overlay standardmäßig sichtbar */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1; /* Overlay liegt über dem Bild */
+}
+
+.project-title {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--white);
+    text-align: center;
+}
+
+.project-overlay p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+
+
+/* ==============================
+   Booking iFrame Styles
+   ============================== */
+
+#booking {
+    width: 100%; /* Nimmt die gesamte Breite des Viewports */
+    background-color: var(--light-gray); /* Setzt den Hintergrund passend zum Screenshot */
+}
+
+#booking .section-content {
+    max-width: 100%; /* Entfernt die Standardbegrenzung */
+    padding: 0; /* Entfernt das Standard-Padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#booking iframe {
+    width: 100% !important; /* Nimmt die gesamte Breite des Containers ein */
+    height: 85vh; /* Dynamische Höhe */
+    border: none;
+}
+
+/* ==============================
+   Footer Styles
+   ============================== */
+
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-color);
+    text-align: center;
+    padding: 1.5em;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================
+   Responsive Styles
+   ============================== */
+
+@media (max-width: 1024px) {
+    header .logo-img { max-width: 150px; }
+    .header-text { font-size: 12pt; }
+    .skills-container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    section { padding: 80px 0; }
+}
+
+@media (max-width: 768px) {
+    header .logo-img { max-width: 120px; }
+    .header-text { font-size: 10pt; }
+    .content-wrapper { flex-direction: column; }
+    .btn { padding: 0.8em 1.5em; }
+    section { padding: 60px 0; }
+    .skill-card { margin-bottom: 20px; }
+}
+
+@media (max-width: 480px) {
+    header .logo-img { max-width: 100px; }
+    .header-text { font-size: 8pt; }
+    .btn { font-size: 0.9em; }
+    nav a { font-size: 0.9em; }
+}
+
+
+#darkModeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay color */
+    pointer-events: none;
+    z-index: 9999; /* High z-index to ensure overlay appears above other content */
+    display: none; /* Initially hidden */
+    --mouse-x: 50vw;
+    --mouse-y: 50vh;
+    mask-image: radial-gradient(circle 150px at var(--mouse-x) var(--mouse-y), transparent 30%, black 100%);
+    -webkit-mask-image: radial-gradient(circle 150px at var(--mouse-x) var(--mouse-y), transparent 30%, black 100%);
+    transition: mask-position 0.1s ease;
+}
+
+/* Make the overlay visible when the 'active' class is added */
+#darkModeOverlay.active {
+    display: block;
+}
