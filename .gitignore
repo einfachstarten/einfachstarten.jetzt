@@ -1,1 +1,5 @@
+# Lokale Ordner ausschließen
 stats/
+.git/
+*.log
+*.bak
