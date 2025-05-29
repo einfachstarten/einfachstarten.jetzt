@@ -2,4 +2,4 @@
 stats/
 .git/
 *.log
-*.bak
+*.bakbackup-to-github.sh
