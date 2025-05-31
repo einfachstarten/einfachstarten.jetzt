@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einfach Starten</title>
+    <meta name="description" content="Einfach Starten - Innovations- und Produktmanagement mit Fokus auf agile Methoden. Unterstützung bei Projektumsetzung und Zielerreichung.">
+    <meta name="keywords" content="Innovationsmanagement, Produktmanagement, agiles Coaching, Projektleitung, Marcus Braun">
+    <!-- Einbinden von Normalize CSS für konsistente Darstellung -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous">
+    <!-- Einbinden von Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Einbinden Ihrer eigenen CSS-Datei -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RTS6Q7W40"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-5RTS6Q7W40');
+    </script>
+</head>
+<body>
+
+<nav aria-label="Hauptnavigation">
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <img src="img/logo_white_transparent.png" alt="Einfach Starten Logo" class="nav-logo">
+        </a>
+        <button class="nav-toggle" aria-label="Menü umschalten">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="#about">Über mich</a>
+            <a href="#offer">Mein Angebot für Sie</a>
+            <a href="#skills-section">Meine Skills</a>
+            <a href="#projects">Projekte</a>
+            <a href="#network">Netzwerk</a>
+            <a href="#booking">Kontakt</a>
+            <button id="darkModeToggle" class="material-toggle">
+                🌙
+            </button>
+        </div>
+    </div>
+</nav>
+
+<header id="home" role="banner">
+    <img src="img/logo.png" alt="Einfach Starten Logo" loading="lazy" class="logo-img">
+    <p class="header-text">
+        Lass uns starten. <br>Einfach. <br>Jetzt.
+    </p>
+    <a href="#booking" class="btn">Jetzt Termin vereinbaren</a>
+</header>
+
+<section id="about" class="section-light">
+    <div class="section-content">
+        <h2>Herzlich willkommen!</h2>
+        <div class="content-wrapper">
+            <img src="img/marcus.jpg" alt="Marcus Braun" loading="lazy" class="responsive-img">
+            <div class="text-content">
+                <p>Ich bin Marcus – ein engagierter Familienmensch, Innovationsenthusiast und erfahrener Manager mit einer besonderen Leidenschaft für <span class="highlight">moderne Führungsstile</span>. Meine Stärke liegt darin, <span class="highlight">visionäre Ideen in die Realität umzusetzen</span>, wobei ich sowohl auf Details achte als auch das große Ganze im Blick behalte. Als Vater von zwei wunderbaren Söhnen und Ehemann schätze ich die <span class="highlight">Balance zwischen Beruf und Familie</span>. In meiner Freizeit findet man mich auf dem Mountainbike in den Bergen oder auf langen Wanderungen mit unserem Familienhund.</p>
+                <p>Seit 2008 bin ich im <span class="highlight">agilen Management</span> verwurzelt und habe mein Fachwissen in verschiedenen Branchen erfolgreich eingesetzt. Mein Fokus liegt darauf, Projekte <span class="highlight">agil, effizient und transparent</span> voranzutreiben. Mit Zertifizierungen als <span class="highlight">Professional Scrum Master (PSM)</span>, <span class="highlight">Professional Scrum Product Owner (PSPO)</span> und <span class="highlight">Certified Professional for Requirements Engineering (CPRE)</span> unterstütze ich Teams dabei, ihre Zusammenarbeit zu optimieren und nachhaltige Werte zu schaffen.</p>
+                <p>Ich bin stolz darauf, Unternehmen und Führungskräfte auf ihrem Weg zum Erfolg zu begleiten. Durch <span class="highlight">maßgeschneiderte Schulungen, Trainings und Workshops</span> gehe ich gezielt auf die individuellen Bedürfnisse Ihres Unternehmens ein. Flexibilität ist für mich selbstverständlich: Ob als <span class="highlight">Interim Manager zur Überbrückung von Personalengpässen</span> oder in Strategieworkshops, in denen wir gemeinsam die Zukunft Ihres Unternehmens gestalten – ich stehe Ihnen zur Seite.</p>
+                <p>Als Verfechter des <span class="highlight">lebenslangen Lernens</span> kooperiere ich gerne mit Universitäten, Hochschulen und Bildungseinrichtungen. Bildung ist für mich der Schlüssel zu einer erfolgreichen Zukunft, und ich freue mich darauf, auch Sie und Ihr Team bei der Erreichung Ihrer Ziele zu unterstützen.</p>
+                <p><span class="highlight">Lassen Sie uns gemeinsam durchstarten</span> – ich freue mich auf die Zusammenarbeit!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="offer" class="section-light">
+    <div class="section-content">
+        <h2>Mein Angebot für Sie</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="skill-title">Agile Methoden & kreative Techniken</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Seit 2008 habe ich umfangreiche Erfahrung im agilen Management und als aktiver Teil von agilen Teams weltweit gesammelt. Diese Erfahrung setze ich ein, um Ihr Projekt agil, effizient und transparent voranzubringen.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="skill-title">Professional Scrum Master (PSM)</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Ich habe viel Leidenschaft, fundiertes Wissen, jahrelange Erfahrung und natürlich auch eine Zertifizierung als Scrum Master. Ich unterstütze Ihre Scrum Teams gerne dabei, agile Prozesse effizient umzusetzen.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="skill-title">Professional Scrum Product Owner (PSPO)</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Mit meiner jahrelangen und aktiven Erfahrung kann ich für Sie die Rolle des zertifizierten Product Owners übernehmen und den Mehrwert Ihres Produkts oder Projekts maximieren.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                    <div class="skill-title">Professional Requirements Engineering</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Ich habe tiefe und praxisbewährte Kenntnisse in der Erfassung, Spezifikation und Verwaltung von Anforderungen, um erfolgreiche und komplexe Produkte IREB-zertifiziert für Sie zu entwickeln.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="skill-title">Schulungen / Training</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Ich arbeite in vielen Bildungsprojekten, als Gastdozent an Bildungseinrichtungen und Trainer bei Geschäftspartnern. Gerne gebe ich mein Wissen an Sie oder Ihre Mitarbeitenden weiter.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="skill-title">Workshops</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Für jeden Workshop übernehme ich die Vorbereitung, Moderation und Dokumentation, maßgeschneidert auf die Bedürfnisse Ihres Unternehmens oder Teams.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="skill-title">Interim Management</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>Als Interim Manager biete ich Ihnen flexible und kompetente Unterstützung in Führungspositionen, um Engpässe zu überbrücken, Veränderungsprozesse zu begleiten oder spezielle Projekte zu leiten.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    <div class="skill-icon"><i class="fas fa-flag"></i></div>
+                    <div class="skill-title">Strategieworkshop</div>
+                </div>
+                <div class="skill-card-content">
+                    <p>In diesem maßgeschneiderten Workshop erarbeiten wir gemeinsam eine Strategie für Ihr Produkt, Projekt oder Unternehmen, damit jeder Mitarbeitende weiß, auf welches Ziel er hinarbeitet.</p>
+                    <a href="#booking" class="btn btn-small">Termin buchen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills-section" class="section-light">
+    <div class="section-content">
+        <h2>Meine Skills</h2>
+        <p class="skills-description">
+            Erkunden Sie die umfangreiche Palette meiner Soft Skills und technischen Kompetenzen. Es ist ein gut gefüllter, professioneller Werkzeugkasten, auf den ich zurückgreifen kann, um Ihre Projekte, Visionen und Ziele erfolgreich in die Tat umzusetzen.<br>
+            Speziell die Liste der technischen Kompetenzen wächst Tag für Tag, da ich mich ständig up to date halte.
+        </p>
+        <div class="scroll-container" id="scrollContainerSkills">
+            <div class="skills-wrapper" id="skillsWrapper">
+                <div class="skill-box">Agiles<br> Management</div>
+                <div class="skill-box">Kreativität</div>
+                <div class="skill-box">Effiziente<br> Kommunikation</div>
+                <div class="skill-box">Empathie</div>
+                <div class="skill-box">Flexibilität</div>
+                <div class="skill-box">Mentoring</div>
+                <div class="skill-box">Leadership</div>
+                <div class="skill-box">Coaching</div>
+                <div class="skill-box">Problem<br>Solving</div>
+                <div class="skill-box">Lebenslanges<br>Lernen</div>
+                <div class="skill-box">Kunden-<br>zentrierung</div>
+                <div class="skill-box">Strategisches<br> Denken</div>
+                <div class="skill-box">Selbstmanagement</div>
+                <div class="skill-box">Organisation</div>
+                <div class="skill-box">Kommunikation</div>
+                <div class="skill-box">Detailtreue</div>
+                <div class="skill-box">Laterale<br>Führung</div>
+            </div>
+        </div>
+        <div class="scroll-container" id="scrollContainerTech">
+            <div class="tech-wrapper" id="techWrapper">
+                <div class="tech-box">Professional<br>Scrum Master<br>(PSM)</div>
+                <div class="tech-box">Professional<br> Scrum Product<br>Owner (PSPO)</div>
+                <div class="tech-box">Certified<br>Requirements<br>Engineer (CPRE)</div>
+                <div class="tech-box">Python</div>
+                <div class="tech-box">Slack</div>
+                <div class="tech-box">Microsoft Teams</div>
+                <div class="tech-box">Zoom</div>
+                <div class="tech-box">Google Meet</div>
+                <div class="tech-box">Webex</div>
+                <div class="tech-box">Terraform</div>
+                <div class="tech-box">Azure</div>
+                <div class="tech-box">Repl.it</div>
+                <div class="tech-box">HTML</div>
+                <div class="tech-box">CSS</div>
+                <div class="tech-box">JavaScript</div>
+                <div class="tech-box">Postman</div>
+                <div class="tech-box">JSON</div>
+                <div class="tech-box">RESTful API</div>
+                <div class="tech-box">GraphQL</div>
+                <div class="tech-box">SOAP</div>
+                <div class="tech-box">NoSQL</div>
+                <div class="tech-box">Jira</div>
+                <div class="tech-box">Confluence</div>
+                <div class="tech-box">Trello</div>
+                <div class="tech-box">Asana</div>
+                <div class="tech-box">Basecamp</div>
+                <div class="tech-box">Monday.com</div>
+                <div class="tech-box">Windows</div>  
+                <div class="tech-box">Linux</div>
+                <div class="tech-box">MacOS</div>
+                <div class="tech-box">Microsoft<br>Word</div>
+                <div class="tech-box">Microsoft<br>Excel</div>
+                <div class="tech-box">Microsoft<br>PowerPoint</div>
+                <div class="tech-box">Google Docs</div>
+                <div class="tech-box">Google Sheets</div>
+                <div class="tech-box">Google Slides</div>
+                <div class="tech-box">Miro</div>
+                <div class="tech-box">Figma</div>
+                <div class="tech-box">Draw.io</div>
+                <div class="tech-box">Markdown</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section-light">
+    <div class="section-content">
+        <h2>Meine Projekterfahrung</h2>
+        <p class="projects-description">
+            Entdecken Sie eine Auswahl spannender Projekte, die ich im Laufe meiner Karriere realisiert habe. Hier können Sie Einblicke in meine bisherigen Tätigkeiten gewinnen und mehr darüber erfahren, wie ich komplexe Herausforderungen meistere und innovative Lösungen entwickle.
+        </p>
+        
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">ADAC Connected Car</h3>
+                <p>Zusammen mit einem Projektteam und einem Entwicklungsteam implementiere ich ein Connected Car Backend.</p>
+            </div>
+            <img src="img/project0.jpg" alt="ADAC Connected Car" loading="lazy">
+        </div>
+        
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">ÖAMTC FutureLab</h3>
+                <p>Leitung eines Pilotprojekts zur Entwicklung einer Co-Creation Plattform.</p>
+            </div>
+            <img src="img/project2.jpg" alt="ÖAMTC FutureLab Projekt" loading="lazy">
+        </div>
+        
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">Intelematics Europe</h3>
+                <p>Gründung eines internationalen Joint Ventures für Connected Car Lösungen. Von diesem wurden maßgeschneiderte Mobilitätslösungen für europäische Automobilclubs entwickelt.</p>
+            </div>
+            <img src="img/project3.jpg" alt="Intelematics Europe Projekt" loading="lazy">
+        </div>
+
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">Produktlaunch ÖAMTC Smart Connect</h3>
+                <p>Entwicklung, Pilotierung und letztendlich kommerzieller Launch des ersten Connected Car Produkts des ÖAMTC. Auszeichnung mit dem FIA Innovation Award.</p>
+            </div>
+            <img src="img/project4.jpg" alt="ÖAMTC Smart Connect Projekt" loading="lazy">
+        </div>
+
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">Limerick Tunnel</h3>
+                <p>System Engineering und Projektleitung für ein autonomes Erkennungssystem in einem Tunnelbetrieb.</p>
+            </div>
+            <img src="img/project1.jpg" alt="Limerick Tunnel Projekt" loading="lazy">
+        </div>
+        
+        <div class="project-card">
+            <div class="project-overlay">
+                <h3 class="project-title">Relaunch Kapsch Incident Detection 2.0</h3>
+                <p>Das Videodetektionssystem der Kapsch TrafficCom AG wurde unter meiner Leitung relauncht und gewann den Intertraffic Innovation Award.</p>
+            </div>
+            <img src="img/project5.jpg" alt="ÖAMTC Smart Connect Projekt" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<section id="network" class="section-light">
+    <div class="section-content">
+        <h2>Netzwerk</h2>
+        <p class="network-description">
+            Bleiben Sie auf dem Laufenden und vernetzen Sie sich mit mir! Abonnieren Sie meinen Newsletter, um exklusive Einblicke, Tipps und Updates direkt in Ihr Postfach zu erhalten. Gemeinsam können wir ein starkes Netzwerk aufbauen und voneinander profitieren.
+        </p>
+        <div id="mc_embed_signup">
+            <form action="https://jetzt.us2.list-manage.com/subscribe/post?u=a8f5b360061eaec92a28eeb47&amp;id=b0d0f469c6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">Email Adresse <span class="asterisk">*</span></label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_a8f5b360061eaec92a28eeb47_b0d0f469c6" tabindex="-1" value="">
+                    </div>
+                    <div class="clear">
+                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="section-light">
+    <div class="section-content">
+        <h2>Terminvereinbarung</h2>
+        <iframe src="https://einfachstarten.youcanbook.me/" allowfullscreen title="Terminvereinbarung"></iframe>
+        <a href="#home" class="btn">Zurück nach oben</a>
+    </div>
+</section>
+
+
+<footer>
+    <p>&copy; 2024 Einfach Starten. Alle Rechte vorbehalten.</p>
+    <p style="font-size: 0.8em; margin-top: 5px;">
+        <a href="impressum.html" style="color: var(--footer-color); text-decoration: none;">Impressum & Datenschutz</a>
+    </p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        navLinkItems.forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.classList.add('hide');
+            } else {
+                navbar.classList.remove('hide');
+                if (scrollTop > 50) {
+                    navbar.classList.add('shrink');
+                } else {
+                    navbar.classList.remove('shrink');
+                }
+            }
+            lastScrollTop = scrollTop;
+        });
+        function duplicateContent(wrapper) {
+            while (wrapper.scrollWidth < window.innerWidth * 2) {
+                wrapper.innerHTML += wrapper.innerHTML;
+            }
+        }
+        const skillsWrapper = document.getElementById('skillsWrapper');
+        const techWrapper = document.getElementById('techWrapper');
+        let positionSkills = 0;
+        let speedSkills = 0.5;
+        let positionTech = 0;
+        let speedTech = 0.6;
+        duplicateContent(skillsWrapper);
+        duplicateContent(techWrapper);
+        function animateSkills() {
+            positionSkills -= speedSkills;
+            if (positionSkills <= -skillsWrapper.scrollWidth / 2) {
+                positionSkills = 0;
+            }
+            skillsWrapper.style.transform = `translateX(${positionSkills}px)`;
+            requestAnimationFrame(animateSkills);
+        }
+        document.getElementById('scrollContainerSkills').addEventListener('mouseenter', () => {
+            speedSkills = 0.2;
+        });
+        document.getElementById('scrollContainerSkills').addEventListener('mouseleave', () => {
+            speedSkills = 0.5;
+        });
+        function animateTech() {
+            positionTech -= speedTech;
+            if (positionTech <= -techWrapper.scrollWidth / 2) {
+                positionTech = 0;
+            }
+            techWrapper.style.transform = `translateX(${positionTech}px)`;
+            requestAnimationFrame(animateTech);
+        }
+        document.getElementById('scrollContainerTech').addEventListener('mouseenter', () => {
+            speedTech = 0.3;
+        });
+        document.getElementById('scrollContainerTech').addEventListener('mouseleave', () => {
+            speedTech = 0.6;
+        });
+        animateSkills();
+        animateTech();
+    });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeOverlay = document.getElementById('darkModeOverlay');
+
+    // Toggle dark mode overlay
+    darkModeToggle.addEventListener('click', function() {
+        darkModeOverlay.classList.toggle('active');
+    });
+
+    // Update flashlight position on mouse move
+    document.addEventListener('mousemove', function(event) {
+        if (darkModeOverlay.classList.contains('active')) {
+            const x = event.clientX + 'px';
+            const y = event.clientY + 'px';
+            darkModeOverlay.style.setProperty('--mouse-x', x);
+            darkModeOverlay.style.setProperty('--mouse-y', y);
+        }
+    });
+});
+</script>
+
+<div id="darkModeOverlay"></div>
+
+</body>
+</html>
