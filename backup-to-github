@@ -10,7 +10,7 @@ if [ -n "$(git status --porcelain)" ]; then
     echo "Änderungen gefunden – sichere auf GitHub..."
     git add .
     git commit -m "Automatisches Backup am $DATUM"
-    git push https://github.com/einfachstarten/einfachstarten.jetzt.git main
+    git push https://einfachstarten:${GITHUB_TOKEN}@github.com/einfachstarten/einfachstarten.jetzt.git main
 else
     echo "Keine Änderungen – kein Backup notwendig."
 fi
